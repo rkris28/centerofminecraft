@@ -1,7 +1,8 @@
 package com.centerofminecraft;
 
 import net.fabricmc.api.ModInitializer;
-
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +19,8 @@ public class Centerofminecraft implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+		ModBlocks.initialize();
+		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(ModBlocks::addToBuildingBlocksTab);
 
 		LOGGER.info("Center of Minecraft initialized! - FRC Team 47");
 	}
